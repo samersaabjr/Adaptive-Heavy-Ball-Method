@@ -10,21 +10,21 @@ The convergence rate, overall performance, and robustness of AHB is studied.
 
 To demonstrate the reduced tuning efforts that AHB offers, AHB is only tuned where it is reasonable to do so. To that end, AHB is tuned on one-dimensional (Lessard) and two-dimensional (Beale) functions, where tuning is cheap. The effect of tuning is also showed on an example including quadratic cost functions. In large-scale systems however, tuning is computationally expensive, and thus AHB is implemented on deep neural networks with no tuning involved, by setting gamma=1.
 
-Then we compare our adaptive HB with a time-invariant and time-varying HB on positive semi-definite quadratic functions
-We further evaluate the robustness and convergence rate of our adaptive HB optimizer against other known optimizers on the non-convex Beale function in Section \ref{sec:results_nonconvex}. 
-Lastly, we evaluate the optimizer's performance against popular optimizers on MNIST, CIFAR-10, and CIFAR-100 \cite{krizhevsky2009learning} in Section \ref{sec:image_classification}. Our codes for all experiments will be made publicly available.
-
 **Lessard Problem**
 
-The superiority of the convergence rate of AHB when compared to the optimal HB method, along with several other optimizers, is shown on the strongly convex function given in [1].
-
-AHB is compared with...
+The Lessard problem in [1] uses a strongly convex function, with non twice differentiable gradients. The superiority of the convergence rate of AHB when compared to the optimal heavy-ball (HB) method [2] is shown on the Lessard problem.
 
 ![Lessard_Example](https://user-images.githubusercontent.com/44982976/123044656-f78b8280-d3c7-11eb-8de7-f078039ad073.png)
 
-The figue above is a visualization of the convergence rate of AHB versus optimal HB [2] via the norm of the error at every iteration (k).
+The figue above is a visualization of the convergence rate of AHB versus optimal HB via the norm of the error at every iteration (k).
+
+![Lessard_Example3_v2](https://user-images.githubusercontent.com/44982976/123048772-c5305400-d3cc-11eb-8239-86c37e699f3d.png)
+
+The figure above displayes norm of the error produced by AHB veresus the optimal HB in the presence of noisy gradients.
 
 **Positive Semi-Definite Quadratic Functions**
+
+The AHB is compared with a time-invariant and time-varying HB on positive semi-definite quadratic functions.
 
 
 
