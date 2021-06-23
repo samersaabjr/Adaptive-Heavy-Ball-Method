@@ -66,6 +66,10 @@ The learning rate chosen for diffGrad is 0.001 with the standard values of beta_
 
 These experiments are run using the Numpy library provided in Python. The codes are in the "Lessard" folder. To run the entire experiment, simply run "main_Lessard.py". To reproduce the results above, just select whether or not you want noisy gradients by setting "add_noise" to 1 or 0. The gamma and number of iterations ("num_iter") are set to repreoduce the same results as above, however the variables can be changed as desired. The variables ending with "_inrange" correspond to the experiment where the initial conditions are unfiormly sampled from the range -5 <= x0 < 1, and the variables ending with "_outrange" correspond to the experiment where the initial conditions are unfiormly sampled from the range 1 <= x0 <= 5.
 
+**Beale Function**
+
+These experiments are run using the Numpy library provided in Python. The codes are in the "Beale" folder. The code for each optimizer is titled "OptimizerName_Class_Numpy.py". To run the experiment, simply run "MAIN_Beale.py". The number of runs and iterations are set to 1000 each, but can be modified if desired. When the code is run it will save text files titled as the optimizer name which saves the history of the parameter updates as they reach the solution for the last run.
+
 # References
 
 [1] Lessard, Laurent, Benjamin Recht, and Andrew Packard. "Analysis and design of optimization algorithms via integral quadratic constraints." SIAM Journal on Optimization 26.1 (2016): 57-95.
