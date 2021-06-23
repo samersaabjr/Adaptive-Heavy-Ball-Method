@@ -24,7 +24,7 @@ The figure above displayes norm of the error produced by AHB veresus the optimal
 
 **Positive Semi-Definite Quadratic Functions**
 
-The AHB is compared with a time-invariant and time-varying HB on positive semi-definite quadratic functions.
+The AHB is compared with a time-invariant and time-varying HB (satisfying the conditions of the work in [3]) on positive semi-definite quadratic functions.
 
 
 
@@ -32,7 +32,7 @@ The AHB is compared with a time-invariant and time-varying HB on positive semi-d
 
 The convergence rate of AHB is evaluated by comparing it with first-order optimizers on the (non-convex and non-quadratic) Beale function.
 
-AHB is compared with stochastic gradient descent (SGD), SGD with Momentum (SGDm) [3], Nesterov's accelerated gradient (NAG) method [4], AdaGrad [5], RMSProp [6], and Adam [7]. The learning rates for all optimizers, excluding MADAGRAD, are chosen by conducting a random search over the values {0.5, 0.1, 0.05, 0.01, 0.005, 0.001}, where each optimizer is run over 1000 random initializations of the model parameters. The optimizer parameters that returned the fastest convergence rates were chosen. 
+AHB is compared with stochastic gradient descent (SGD), SGD with Momentum (SGDm) [4], Nesterov's accelerated gradient (NAG) method [5], AdaGrad [6], RMSProp [7], and Adam [8]. The learning rates for all optimizers, excluding MADAGRAD, are chosen by conducting a random search over the values {0.5, 0.1, 0.05, 0.01, 0.005, 0.001}, where each optimizer is run over 1000 random initializations of the model parameters. The optimizer parameters that returned the fastest convergence rates were chosen. 
 
 The learning rates that are selected for SGD, SGDm, NAG, RMSProp, Adagrad, and Adam are 0.01, 0.01, 0.001, 0.01, 0.5, and 0.5, respectively. The momentum factor used for SGDm is the standard value of 0.9, and the standard values of beta_1=0.9 and beta_2=0.99 are used for Adam. As for AHB, a hyper-parameter search for gamma was conducted, sweeping over the values {1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2}. The value taken for all hyper-parameter searches was the one that returned the largest number of times each optimizer converged. The value for gamma for AHB was chosen to be 1.2. 
 
@@ -52,15 +52,15 @@ Adam | 69 | 535 | 586.37
 
 **Image Classification**
 
-AHB's performance is evaluated against popular optimizers on MNIST, QMNIST, CIFAR-10, and CIFAR-100, where the lower-bound of the adaptive learning rate is fixed to 0.05 as default value for image classification. Specifically, MADAGRAD is compared with SGDm [3], NAG [4], Adam [7], and AdamW [8].
+AHB's performance is evaluated against popular optimizers on MNIST, QMNIST, CIFAR-10, and CIFAR-100, where the lower-bound of the adaptive learning rate is fixed to 0.05 as default value for image classification. Specifically, MADAGRAD is compared with SGDm [4], NAG [5], Adam [8], and AdamW [9].
 
 The MNIST dataset is a 10-class image classification dataset composed of 60,000 and 10,000 training and testing grey-scale images of hand-written digits, respectively. QMNIST extends MNIST's testing set to 60,000 testing images. The CIFAR-10 and CIFAR-100 datasets consist of 50,000 training images and 10,000 testing images with dimensions 32x32 with 10 and 100 classes, respectively.
 
-For MNIST and QMNIST, the neural network used is the conventional convolutional neural network (CNN) as designed in [9], which includes two convolutional layers with kernel size 5, one fully-connected hidden layer, and a proceeding fully-connected classification layer of 50 neurons. The activation function chosen is the ReLU function. The networks are run over 5 random (seeds) initializations of the network parameters, and a batch size of 64 is used.
+For MNIST and QMNIST, the neural network used is the conventional convolutional neural network (CNN) as designed in [10], which includes two convolutional layers with kernel size 5, one fully-connected hidden layer, and a proceeding fully-connected classification layer of 50 neurons. The activation function chosen is the ReLU function. The networks are run over 5 random (seeds) initializations of the network parameters, and a batch size of 64 is used.
 
 For SGDm, a learning rate value of 0.01 is chosen with beta = 0.9. For Adam, a learning rate of 0.0005 is chosen with beta_1=0.9 and beta_2=0.99. For NAG, a learning rate of 0.01 is chosen and beta=0.9. Lastly, for AdamW, a learning rate of 0.0005 is chosen with beta_1=0.9 and beta_2=0.99, and a weight decay value of 1.
 
-For the CIFAR experiments, the tuning parameters set forth by Zhang et al. [10] are adopted for SGDm and AdamW, and similarly run the experiments using a Resnet-18 [11] for three different seeds using a batch size of 128. Additionally, Adam is tuned in-house. All optimizers are tuned on CIFAR-10, then the same hyper-parameters are used on CIFAR-100.
+For the CIFAR experiments, the tuning parameters set forth by Zhang et al. [11] are adopted for SGDm and AdamW, and similarly run the experiments using a Resnet-18 [12] for three different seeds using a batch size of 128. Additionally, Adam is tuned in-house. All optimizers are tuned on CIFAR-10, then the same hyper-parameters are used on CIFAR-100.
 
 SGDm uses beta=0.9, learning rate of 0.05, and weight decay value of 0.001. AdamW has a learning rate of 0.0003 and weight decay value of 1. For NAG, a learning rate of 0.05 is used and beta=0.9. For Adam, a learning rate value of 0.005 is chosen with beta_1=0.9 and beta_2=0.99.
 
@@ -92,20 +92,22 @@ These experiments are run using the Numpy library provided in Python. The codes 
 
 [2] Polyak, Boris T. "Introduction to optimization. optimization software." Inc., Publications Division, New York 1 (1987).
 
-[3] Qian, Ning. "On the momentum term in gradient descent learning algorithms." Neural networks 12.1 (1999): 145-151.
+[3] Ghadimi, Euhanna, Hamid Reza Feyzmahdavian, and Mikael Johansson. "Global convergence of the heavy-ball method for convex optimization." 2015 European control conference (ECC). IEEE, 2015
 
-[4] Nesterov, Yu. "A method of solving a convex programming problem with convergence rate O (1/k^ 2) O (1/k2)." Sov. Math. Dokl. Vol. 27. No. 2.
+[4] Qian, Ning. "On the momentum term in gradient descent learning algorithms." Neural networks 12.1 (1999): 145-151.
 
-[5] Duchi, John, Elad Hazan, and Yoram Singer. "Adaptive subgradient methods for online learning and stochastic optimization." Journal of machine learning research 12.7 (2011).
+[5] Nesterov, Yu. "A method of solving a convex programming problem with convergence rate O (1/k^ 2) O (1/k2)." Sov. Math. Dokl. Vol. 27. No. 2.
 
-[6] Hinton, Geoffrey, Nitish Srivastava, and Kevin Swersky. "Neural networks for machine learning lecture 6a overview of mini-batch gradient descent." Cited on 14.8 (2012).
+[6] Duchi, John, Elad Hazan, and Yoram Singer. "Adaptive subgradient methods for online learning and stochastic optimization." Journal of machine learning research 12.7 (2011).
 
-[7] Kingma, Diederik P., and Jimmy Ba. "Adam: A method for stochastic optimization." arXiv preprint arXiv:1412.6980 (2014).
+[7] Hinton, Geoffrey, Nitish Srivastava, and Kevin Swersky. "Neural networks for machine learning lecture 6a overview of mini-batch gradient descent." Cited on 14.8 (2012).
 
-[9] Gregor Koehler, "Mnist handwritten digit recognition in pytorch." url=https://nextjournal.com/gkoehler/pytorch-mnist, (2020).
+[8] Kingma, Diederik P., and Jimmy Ba. "Adam: A method for stochastic optimization." arXiv preprint arXiv:1412.6980 (2014).
 
-[8] Loshchilov, Ilya, and Frank Hutter. "Fixing weight decay regularization in adam." (2018).
+[9] Loshchilov, Ilya, and Frank Hutter. "Fixing weight decay regularization in adam." (2018).
 
-[10] Zhang, Michael R., et al. "Lookahead optimizer: k steps forward, 1 step back." arXiv preprint arXiv:1907.08610 (2019).
+[10] Gregor Koehler, "Mnist handwritten digit recognition in pytorch." url=https://nextjournal.com/gkoehler/pytorch-mnist, (2020).
 
-[11] He, Kaiming, et al. "Deep residual learning for image recognition." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
+[11] Zhang, Michael R., et al. "Lookahead optimizer: k steps forward, 1 step back." arXiv preprint arXiv:1907.08610 (2019).
+
+[12] He, Kaiming, et al. "Deep residual learning for image recognition." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
