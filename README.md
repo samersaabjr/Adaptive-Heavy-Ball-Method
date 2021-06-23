@@ -32,9 +32,21 @@ The figue above is a visualization of the convergence rate of AHB versus optimal
 
 The convergence rate of AHB is evaluated by comparing it with first-order optimizers on the (non-convex and non-quadratic) Beale function.
 
-AHB is compared with stochastic gradient descent (SGD), SGD with Momentum (SGDm) [3], Nesterov's accelerated gradient (NAG) method [4], AdaGrad [5], Adadelta [6], and Adam [7]. The learning rates for all optimizers, excluding MADAGRAD, are chosen by conducting a random search over the values {0.5, 0.1, 0.05, 0.01, 0.005, 0.001, 0.0005, 0.0001}, where each optimizer is run over 1000 random initializations of the model parameters. The optimizer parameters that returned the fastest convergence rates were chosen. The parameters are already set in the codes above.
+AHB is compared with stochastic gradient descent (SGD), SGD with Momentum (SGDm) [3], Nesterov's accelerated gradient (NAG) method [4], AdaGrad [5], RMSProp [6], and Adam [7]. The learning rates for all optimizers, excluding MADAGRAD, are chosen by conducting a random search over the values {0.5, 0.1, 0.05, 0.01, 0.005, 0.001}, where each optimizer is run over 1000 random initializations of the model parameters. The optimizer parameters that returned the fastest convergence rates were chosen. 
+
+The learning rates that are selected for SGD, SGDm, NAG, RMSProp, Adagrad, and Adam are 0.01, 0.01, 0.001, 0.01, 0.5, and 0.5, respectively. The momentum factor used for SGDm is the standard value of 0.9, and the standard values of beta_1=0.9 and beta_2=0.99 are used for Adam. As for oAHB, a hyper-parameter search for gamma was conducted, sweeping over the values { 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2}. The value taken for all hyper-parameter searches was the one that returned the largest number of times each optimizer converged. The value for gamma for AHB was chosen to be 1.2. 
 
 The performance metrics considered are the number of times each optimizer converges, the average number of steps takent to converge (given converged), and wins. A win is recorded for the optimizers that converge to a solution first within the first 1000 iterations.
+
+Optimizer | Wins | Times converged | Average steps 
+--- | --- | --- | ---
+AHB | 801 | 915 | 175.52 
+SGD | 0 | 27 | 992.94  
+SGDm | 32 | 319 | 719.11 
+NAG | 12 | 569 | 575.23 
+RMSProp | 2 | 86 | 933.54 
+Adagrad | 13 | 346 | 772.11 
+Adam | 76 | 535 | 586.37 
 
 **Image Classification**
 
@@ -61,7 +73,7 @@ The learning rate chosen for diffGrad is 0.001 with the standard values of beta_
 
 [5] Duchi, John, Elad Hazan, and Yoram Singer. "Adaptive subgradient methods for online learning and stochastic optimization." Journal of machine learning research 12.7 (2011).
 
-[6] Zeiler, Matthew D. "Adadelta: an adaptive learning rate method." arXiv preprint arXiv:1212.5701 (2012).
+[6] Hinton, Geoffrey, Nitish Srivastava, and Kevin Swersky. "Neural networks for machine learning lecture 6a overview of mini-batch gradient descent." Cited on 14.8 (2012).
 
 [7] Kingma, Diederik P., and Jimmy Ba. "Adam: A method for stochastic optimization." arXiv preprint arXiv:1412.6980 (2014).
 
