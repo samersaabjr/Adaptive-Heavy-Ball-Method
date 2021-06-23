@@ -44,11 +44,11 @@ Optimizer | Wins | Times converged | Average steps
 --- | --- | --- | ---
 AHB | 801 | 915 | 175.52 
 SGD | 0 | 27 | 992.94  
-SGDm | 32 | 319 | 719.11 
+SGDm | 34 | 319 | 719.11 
 NAG | 12 | 569 | 575.23 
-RMSProp | 2 | 86 | 933.54 
-Adagrad | 13 | 346 | 772.11 
-Adam | 76 | 535 | 586.37 
+RMSProp | 3 | 86 | 933.54 
+Adagrad | 9 | 346 | 772.11 
+Adam | 69 | 535 | 586.37 
 
 **Image Classification**
 
