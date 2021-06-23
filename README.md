@@ -38,6 +38,8 @@ The learning rates that are selected for SGD, SGDm, NAG, RMSProp, Adagrad, and A
 
 The performance metrics considered are the number of times each optimizer converges, the average number of steps takent to converge (given converged), and wins. A win is recorded for the optimizers that converge to a solution first within the first 1000 iterations.
 
+The table below shows the convergence rate of AHB in comparison to known optimizers when tested on the Beale function.
+
 Optimizer | Wins | Times converged | Average steps 
 --- | --- | --- | ---
 AHB | 801 | 915 | 175.52 
