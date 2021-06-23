@@ -52,13 +52,21 @@ Adam | 69 | 535 | 586.37
 
 **Image Classification**
 
-AHB's performance is evaluated against popular optimizers on MNIST, QMNIST, CIFAR-10, and CIFAR-100, where the lower-bound of the adaptive learning rate is fixed to 0.05 as default value for image classification.
+AHB's performance is evaluated against popular optimizers on MNIST, QMNIST, CIFAR-10, and CIFAR-100, where the lower-bound of the adaptive learning rate is fixed to 0.05 as default value for image classification. Specifically, MADAGRAD is compared with SGDm [3], NAG [4], Adam [7], and AdamW [8].
 
 The MNIST dataset is a 10-class image classification dataset composed of 60,000 and 10,000 training and testing grey-scale images of hand-written digits, respectively. QMNIST extends MNIST's testing set to 60,000 testing images. The CIFAR-10 and CIFAR-100 datasets consist of 50,000 training images and 10,000 testing images with dimensions 32x32 with 10 and 100 classes, respectively.
 
-For MNIST and QMNIST, the neural network used is the conventional convolutional neural network (CNN) as designed in [8], which includes two convolutional layers with kernel size 5, one fully-connected hidden layer, and a proceeding fully-connected classification layer of 50 neurons. The activation function chosen is the ReLU function. The networks are run over 5 random (seeds) initializations of the network parameters, and a batch size of 64 is used.
+For MNIST and QMNIST, the neural network used is the conventional convolutional neural network (CNN) as designed in [9], which includes two convolutional layers with kernel size 5, one fully-connected hidden layer, and a proceeding fully-connected classification layer of 50 neurons. The activation function chosen is the ReLU function. The networks are run over 5 random (seeds) initializations of the network parameters, and a batch size of 64 is used.
 
-The learning rate chosen for diffGrad is 0.001 with the standard values of beta_1=0.9 and beta_2=0.99. For SGDm, a learning rate value of 0.01 is chosen with beta = 0.9. For Adam, a learning rate of 0.0005 is chosen with beta_1=0.9 and beta_2=0.99. For NAG, a learning rate of 0.001 is chosen and beta=0.9. Lastly, for AdamW, a learning rate of 0.0005 is chosen with beta_1=0.9 and beta_2=0.99, and a weight decay value of 1.
+For SGDm, a learning rate value of 0.01 is chosen with beta = 0.9. For Adam, a learning rate of 0.0005 is chosen with beta_1=0.9 and beta_2=0.99. For NAG, a learning rate of 0.01 is chosen and beta=0.9. Lastly, for AdamW, a learning rate of 0.0005 is chosen with beta_1=0.9 and beta_2=0.99, and a weight decay value of 1.
+
+For the CIFAR experiments, the tuning parameters set forth by Zhang et al. [10] are adopted for SGDm and AdamW, and similarly run the experiments using a Resnet-18 [11] for three different seeds using a batch size of 128. Additionally, Adam is tuned in-house. All optimizers are tuned on CIFAR-10, then the same hyper-parameters are used on CIFAR-100.
+
+SGDm uses beta=0.9, learning rate of 0.05, and weight decay value of 0.001. AdamW has a learning rate of 0.0003 and weight decay value of 1. For NAG, a learning rate of 0.05 is used and beta=0.9. For Adam, a learning rate value of 0.005 is chosen with beta_1=0.9 and beta_2=0.99.
+
+![cifar_acc_results](https://user-images.githubusercontent.com/44982976/123177294-fd7a7580-d452-11eb-8527-97d302024e85.png)
+
+The figure above shows the test set accuracy at every epoch for all optimizers on both CIFAR-10 (top) and CIFAR-100 (bottom). The solid lines reflect the mean accuracy over the three random runs, whereas the shaded regions reflect the corresponding standard deviations.
 
 # How to Execute Codes
 
@@ -86,8 +94,10 @@ These experiments are run using the Numpy library provided in Python. The codes 
 
 [7] Kingma, Diederik P., and Jimmy Ba. "Adam: A method for stochastic optimization." arXiv preprint arXiv:1412.6980 (2014).
 
-[8] Gregor Koehler, "Mnist handwritten digit recognition in pytorch." url=https://nextjournal.com/gkoehler/pytorch-mnist, (2020).
+[9] Gregor Koehler, "Mnist handwritten digit recognition in pytorch." url=https://nextjournal.com/gkoehler/pytorch-mnist, (2020).
 
-[9] Zhang, Michael R., et al. "Lookahead optimizer: k steps forward, 1 step back." arXiv preprint arXiv:1907.08610 (2019).
+[8] Loshchilov, Ilya, and Frank Hutter. "Fixing weight decay regularization in adam." (2018).
 
-[10] He, Kaiming, et al. "Deep residual learning for image recognition." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
+[10] Zhang, Michael R., et al. "Lookahead optimizer: k steps forward, 1 step back." arXiv preprint arXiv:1907.08610 (2019).
+
+[11] He, Kaiming, et al. "Deep residual learning for image recognition." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
