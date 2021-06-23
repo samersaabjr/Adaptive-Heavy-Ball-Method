@@ -24,9 +24,7 @@ The figure above displayes norm of the error produced by AHB veresus the optimal
 
 **Positive Semi-Definite Quadratic Functions**
 
-The AHB is compared with a time-invariant and time-varying HB (satisfying the conditions of the work in [3]) on positive semi-definite quadratic functions.
-
-
+The AHB is compared with a time-invariant and time-varying HB (satisfying the conditions of the work in [3]) on positive semi-definite quadratic functions. The quadratic objective functions with positive semi-definite quadratic dxd matrices are considered for dimensions d = {2,...100}. The initial guess is sampled from a normal distribution, N(0,1). For each dimension, 20d iterations are run.
 
 **Beale Function**
 
