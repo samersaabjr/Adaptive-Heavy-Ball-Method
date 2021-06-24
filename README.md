@@ -82,7 +82,7 @@ These experiments are run using the Numpy library provided in Python. The codes 
 
 **Image Classification**
 
-
+The codes are in the "Image Classification" folder. The AHB optimizer itself can be found in the file "AHB.py". To run the AHB optimizer on any of the image classification datasets, simply run "main_MNIST.py", "main_QMNIST.py", "main_cifar10.py", or "main_cifar100.py". You will need to specify the optimizer you are using by populating the "method" variable. The choices are 'ahb', 'sgd', 'nag', 'adam', or 'adamw' (e.g. method = 'ahb').
 
 # References
 
