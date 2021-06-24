@@ -30,7 +30,7 @@ The AHB is compared with a time-invariant and time-varying HB (satisfying the co
 
 The convergence rate of AHB is evaluated by comparing it with first-order optimizers on the (non-convex and non-quadratic) Beale function.
 
-AHB is compared with stochastic gradient descent (SGD), SGD with Momentum (SGDm) [4], Nesterov's accelerated gradient (NAG) method [5], AdaGrad [6], RMSProp [7], and Adam [8]. The learning rates for all optimizers, excluding MADAGRAD, are chosen by conducting a random search over the values {0.5, 0.1, 0.05, 0.01, 0.005, 0.001}, where each optimizer is run over 1000 random initializations of the model parameters. The optimizer parameters that returned the fastest convergence rates were chosen. 
+AHB is compared with stochastic gradient descent (SGD), SGD with Momentum (SGDm) [4], Nesterov's accelerated gradient (NAG) method [5], AdaGrad [6], RMSProp [7], and Adam [8]. The learning rates for all optimizers, excluding AHB, are chosen by conducting a random search over the values {0.5, 0.1, 0.05, 0.01, 0.005, 0.001}, where each optimizer is run over 1000 random initializations of the model parameters. The optimizer parameters that returned the fastest convergence rates were chosen. 
 
 The learning rates that are selected for SGD, SGDm, NAG, RMSProp, Adagrad, and Adam are 0.01, 0.01, 0.001, 0.01, 0.5, and 0.5, respectively. The momentum factor used for SGDm is the standard value of 0.9, and the standard values of beta_1=0.9 and beta_2=0.99 are used for Adam. As for AHB, a hyper-parameter search for gamma was conducted, sweeping over the values {1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2}. The value taken for all hyper-parameter searches was the one that returned the largest number of times each optimizer converged. The value for gamma for AHB was chosen to be 1.2. 
 
@@ -50,7 +50,7 @@ Adam | 69 | 535 | 586.37
 
 **Image Classification**
 
-AHB's performance is evaluated against popular optimizers on MNIST, QMNIST, CIFAR-10, and CIFAR-100, where the lower-bound of the adaptive learning rate is fixed to 0.05 as default value for image classification. Specifically, MADAGRAD is compared with SGDm [4], NAG [5], Adam [8], and AdamW [9].
+AHB's performance is evaluated against popular optimizers on MNIST, QMNIST, CIFAR-10, and CIFAR-100, where the lower-bound of the adaptive learning rate is fixed to 0.05 as default value for image classification. Specifically, AHB is compared with SGDm [4], NAG [5], Adam [8], and AdamW [9].
 
 The MNIST dataset is a 10-class image classification dataset composed of 60,000 and 10,000 training and testing grey-scale images of hand-written digits, respectively. QMNIST extends MNIST's testing set to 60,000 testing images. The CIFAR-10 and CIFAR-100 datasets consist of 50,000 training images and 10,000 testing images with dimensions 32x32 with 10 and 100 classes, respectively.
 
