@@ -1,4 +1,4 @@
-This repository contains implementations for the Adaptive Heavy-Ball optimizer proposed in "An Adaptive Polyak Heavy-Ball Method with Reduced Tuning" in Python (Pytorch for its implementation in deep neural networks).
+This repository contains implementations for the Adaptive Heavy-Ball optimizer proposed in "An Adaptive Heavy-Ball Method" in Python (Pytorch for its implementation in deep neural networks).
 
 The developed adaptive heavy-ball (AHB) assumes that the objective function can be represented with time-varying quadratic functions and estimates the Polyak's optimal hyper-parameters at each iteration. AHB employs the absolute differences of current and previous model parameters and their gradients. Such representation allows for a computationally efficient optimizer. 
 
