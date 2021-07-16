@@ -26,6 +26,18 @@ The figure above displayes norm of the error produced by AHB veresus the optimal
 
 The AHB is compared with a time-invariant and time-varying HB (satisfying the conditions of the work in [3]) on positive semi-definite quadratic functions. The quadratic objective functions with positive semi-definite quadratic dxd matrices are considered for dimensions d = {2,...100}. The initial guess is sampled from a normal distribution, N(0,1). For each dimension, 20d iterations are run.
 
+![Quadratics_1](https://user-images.githubusercontent.com/44982976/126006319-dac00d7a-f46e-40d7-9f45-f72e6daa26d6.jpg)
+
+The figure above shows the comparison of the progress of the objective values with A for d = 50 evaluated at the Cesaro average of the iterates of the three heavy-ball methods under study.
+
+![Quadratics_2](https://user-images.githubusercontent.com/44982976/126006328-a3e6aa01-e768-4cca-84fc-77f60df9fab9.jpg)
+
+The figure above shows the comparison of the objective values with A for d = 2, ..., 100 evaluated at the Cesaro average at the iterate k = 20d of the three heavy-ball methods under study.
+
+![Quadratics_3](https://user-images.githubusercontent.com/44982976/126006340-95527d4c-bbc1-4add-ba9d-59d05fa2cce6.png)
+
+The figure above shows the comparison of the objective values with A for d = 50 evaluated at the Cesaro average at the iterate k = 1,000 of the proposed adaptive heavy-ball method for different values of gamma.
+
 **Beale Function**
 
 The convergence rate of AHB is evaluated by comparing it with first-order optimizers on the (non-convex and non-quadratic) Beale function.
