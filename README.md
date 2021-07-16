@@ -74,7 +74,7 @@ These experiments are run using the Numpy library provided in Python. The codes 
 
 **Positive Semi-Definite Quadratic Functions**
 
-
+This is the only experiment written in MATLAB. Simply run the script "PosSemiDef_Quadratic.m". The code is split into two sections. The first section will plot the cesaro average of iterates for a gamma of the user's choice (just populate gamma variable) for the case of dimension d = 50, as well as the cesaro average at the last iterate for all dimensions. The second section plots the different cesaro average at the last iterate for different values of gamma for the dimension d = 50 case.
 
 **Beale Function**
 
